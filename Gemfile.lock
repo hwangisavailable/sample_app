@@ -289,6 +289,7 @@ DEPENDENCIES
   debug (= 1.5.0)
   guard (= 2.18.0)
   guard-minitest (= 2.4.6)
+  i18n (~> 1.14)
   importmap-rails (= 1.1.0)
   jbuilder (= 2.11.5)
   minitest (= 5.15.0)
