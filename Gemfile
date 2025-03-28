@@ -38,5 +38,5 @@ group :production do
   gem "pg", "1.3.5"
 end
 
-gem "bootstrap-sass", "~> 3.4"
+gem "bootstrap-sass", "3.4.1"
 gem "i18n", "~> 1.14"

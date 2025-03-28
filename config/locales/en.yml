@@ -30,9 +30,28 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+# Common dictionaries
   hello: "Hello world"
   appname: "Ruby on Rails Tutorial Sample App"
+
+  book:
+    author: "Michael Hartl"
+    name: "Ruby on Rails Tutorial"
+
+  img:
+    alt:
+      kitten: "Kitten image"
+      rails_logo: "Rails logo"
+
+# Views only
+  layouts:
+    footer:
+      news: "News"
+
   static_pages:
+    about:
+      title: "About"
+
     contact:
       title: "Contact"
       contact_p:
@@ -48,8 +67,10 @@ en:
         - "Ruby on Rails Tutorial book"
     home:
       title: "Home"
+      welcome: "Welcome to the Sample App"
       home_p:
         - "This is the home page for the"
         - "Ruby on Rails Tutorial"
         - "sample application"
+      cto: "Sign up now!"
 
