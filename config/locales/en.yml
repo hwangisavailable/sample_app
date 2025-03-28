@@ -48,9 +48,25 @@ en:
     footer:
       news: "News"
 
+  users:
+    new:
+      title: "Sign up"
+
   static_pages:
     about:
       title: "About"
+      about_p:
+        - "The"
+        - "Ruby on Rails Tutorial"
+        - "part of the"
+        - "Learn Enough"
+        - "family of tutorials, is a"
+        - "book"
+        - "and"
+        - "screencast series"
+        - "to teach web development with"
+        - "Ruby on Rails"
+        - "This is the sample app for the tutorial"
 
     contact:
       title: "Contact"
