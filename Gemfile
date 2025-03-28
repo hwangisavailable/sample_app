@@ -13,10 +13,10 @@ gem "stimulus-rails",  "1.0.4"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.4"
 gem "bootsnap",        "1.12.0", require: false
+gem "concurrent-ruby", "1.3.4"
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
-  gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
@@ -37,3 +37,6 @@ end
 group :production do
   gem "pg", "1.3.5"
 end
+
+gem "bootstrap-sass", "3.4.1"
+gem "i18n", "~> 1.14"
