@@ -32,7 +32,7 @@
 en:
   hello: "Hello world"
   appname: "Ruby on Rails Tutorial Sample App"
-  pages:
+  static_pages:
     contact:
       title: "Contact"
       contact_p:

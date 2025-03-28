@@ -1,8 +1,6 @@
-<% provide(:title, t(:title, scope: [:pages, :contact])) %>
-<h1><%= t(:title, scope: [:pages, :contact]) %></h1>
+<% provide(:title, t('.title')) %>
+<h1><%= t('.title') %></h1>
 <p>
-    <%= t(:contact_p, scope: [:pages, :contact])[0] %>
-    <a href="https://www.railstutorial.org/contact">
-        <%= t(:contact_p, scope: [:pages, :contact])[1] %>
-    </a>.
+    <%= t('.contact_p')[0] %>
+    <a href="https://www.railstutorial.org/contact"><%= t('.contact_p')[1] %></a>.
 </p>
