@@ -30,4 +30,63 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+# Common dictionaries
   hello: "Hello world"
+  appname: "Ruby on Rails Tutorial Sample App"
+
+  book:
+    author: "Michael Hartl"
+    name: "Ruby on Rails Tutorial"
+
+  img:
+    alt:
+      kitten: "Kitten image"
+      rails_logo: "Rails logo"
+
+# Views only
+  layouts:
+    footer:
+      news: "News"
+
+  users:
+    new:
+      title: "Sign up"
+
+  static_pages:
+    about:
+      title: "About"
+      about_p:
+        - "The"
+        - "Ruby on Rails Tutorial"
+        - "part of the"
+        - "Learn Enough"
+        - "family of tutorials, is a"
+        - "book"
+        - "and"
+        - "screencast series"
+        - "to teach web development with"
+        - "Ruby on Rails"
+        - "This is the sample app for the tutorial"
+
+    contact:
+      title: "Contact"
+      contact_p:
+        - "Contact the Ruby on Rails Tutorial about the sample app at the"
+        - "contact page"
+
+    help:
+      title: "Help"
+      help_p:
+        - "Get help on the Ruby on Rails Tutorial at the"
+        - "Rails Tutorial Help page"
+        - "To get help on this sample app, see the"
+        - "Ruby on Rails Tutorial book"
+    home:
+      title: "Home"
+      welcome: "Welcome to the Sample App"
+      home_p:
+        - "This is the home page for the"
+        - "Ruby on Rails Tutorial"
+        - "sample application"
+      cto: "Sign up now!"
+
