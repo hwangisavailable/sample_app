@@ -16,3 +16,11 @@
 
 <%= link_to image_tag("kitten.jpg", alt: "Kitten image", width: "800"),
                       "https://rubyonrails.org/" %>
+
+<% provide(:title, t('.title')) %>
+<h1><%= t('.title') %></h1>
+<p>
+    <%= t('.home_p')[0] %>
+    <a href="https://www.railstutorial.org/"><%= t('.home_p')[1] %></a>
+    <%= t('.home_p')[2] %>
+</p>
