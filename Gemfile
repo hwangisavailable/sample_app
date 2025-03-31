@@ -17,7 +17,6 @@ gem "concurrent-ruby", "1.3.4"
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
-  gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
