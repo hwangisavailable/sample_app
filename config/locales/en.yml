@@ -43,6 +43,19 @@ en:
       kitten: "Kitten image"
       rails_logo: "Rails logo"
 
+# Model form labels
+  helpers:
+    submit:
+      user:
+        create: "Create my account"
+        update: "Update my account"
+    label:
+      user:
+        name: 'Your name?'
+        email: 'Email?'
+        password: 'Password?'
+        password_confirmation: 'Password confirmation'
+
 # Views only
   layouts:
     footer:
@@ -51,6 +64,16 @@ en:
   users:
     new:
       title: "Sign up"
+    create:
+      flash:
+        success: "User created!"
+        error: "User not created!!!"
+
+  shared:
+    error_messages:
+      message: 
+        one: "The form contains 1 error"
+        other: "The form contains %{count} errors"
 
   static_pages:
     about:
@@ -90,3 +113,4 @@ en:
         - "sample application"
       cto: "Sign up now!"
 
+  
