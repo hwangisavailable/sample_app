@@ -17,9 +17,4 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url, status: :see_other
   end
-
-  def log_out
-    reset_session
-    @current_user = nil
-  end
 end
