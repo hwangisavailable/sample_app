@@ -48,7 +48,7 @@ en:
     submit:
       user:
         create: "Create my account"
-        update: "Update my account"
+        edit: "Save changes"
     label:
       user:
         name: "Your name?"
@@ -82,6 +82,10 @@ en:
       flash:
         success: "User created!"
         error: "User not created!!!"
+    update:
+      flash:
+        success: "Profile updated"
+        error: "Profile not updated?"
 
   shared:
     error_messages:
@@ -92,18 +96,12 @@ en:
   login:
     title: "Log in"
     not_registered: "Sign up now!"
+    not_authorized: "Please log in."
     remember_me: "Remember me on this computer"
     log_out: "Log out"
     flash:
       success: "Logged in successfully"
       error: "Invalid email/password combination"
-
-  pages:
-    settings:
-      title: "Settings"
-
-    profile:
-      title: "Profile"
 
   static_pages:
     about:

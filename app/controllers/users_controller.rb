@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
+  before_action :logged_in_user, only: [:edit, :update]
+
   def show
     # Redirect to root path if user is not found
     if @user.nil?
@@ -51,6 +53,15 @@ class UsersController < ApplicationController
       params
         .require(:user)
         .permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # Before filters
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = t('login.not_authorized')
+        redirect_to login_url, status: :see_other
+      end
     end
 
     def set_user
