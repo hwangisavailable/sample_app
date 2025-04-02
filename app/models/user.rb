@@ -20,16 +20,10 @@ class User < ApplicationRecord
                                                     BCrypt::Engine.cost 
       BCrypt::Password.create(string, cost: cost)
     end
-  end
-
-  def User.new_token
-    SecureRandom.urlsafe_base64
-=======
     
     def new_token
       SecureRandom.urlsafe_base64
     end
->>>>>>> d9fc0b3 (add mailing)
   end
 
   def remember
@@ -50,14 +44,25 @@ class User < ApplicationRecord
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  # Sends activation email.
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+  end
+
+  # Activates an account.
   private
 
     def downcase_email
-    end
-      self.activation_digest = User.digest(activation_token)
-      self.activation_token = User.new_token
-    def create_activation_digest
-
-    end
       self.email = email.downcase
+    end
+    
+    def create_activation_digest
+      self.activation_digest = User.digest(activation_token)
+      self.activation_token = User.new_tokeN
+    end
 end

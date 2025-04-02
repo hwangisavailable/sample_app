@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
   def show
     # Redirect to root path if user is not found
-    if @user.nil?
+    if @user.nil? || !@user.activated
       flash[:danger] = t('.flash.error')
       redirect_to root_url, status: :see_other
     end
@@ -24,11 +24,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       # Handle a successful save.
-      reset_session
-      log_in @user
-
-      flash[:success] = t('.flash.success')
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = t('.flash.mail')
+      redirect_to root_url
     else
       render :new, status: :unprocessable_entity
     end
