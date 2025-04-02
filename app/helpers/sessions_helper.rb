@@ -27,6 +27,10 @@ module SessionsHelper
     end
   end
 
+  def current_user?(user)
+    user && user == current_user
+  end
+
   def remember(user)
     user.remember
     cookies.permanent.encrypted[:user_id] = user.id
@@ -49,4 +53,11 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def logged_in?
+    !current_user.nil?
+  end
+  # For friendly forwarding to other ppl profile when current user is not authorized to edit/delete
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
 end

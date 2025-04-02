@@ -86,6 +86,9 @@ en:
       flash:
         success: "Profile updated"
         error: "Profile not updated?"
+    destroy:
+      flash:
+        success: "User %{name} deleted"
 
   shared:
     error_messages:
@@ -96,7 +99,9 @@ en:
   login:
     title: "Log in"
     not_registered: "Sign up now!"
-    not_authorized: "Please log in."
+    not_authenticated: "Please log in"
+    not_authorized: "You don't have permission to do so"
+
     remember_me: "Remember me on this computer"
     log_out: "Log out"
     flash:
