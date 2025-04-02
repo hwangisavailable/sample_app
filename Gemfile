@@ -43,3 +43,6 @@ gem "i18n", "~> 1.14"
 
 gem "bcrypt", "~> 3.1"
 gem "config", "~> 5.5"
+gem "faker",  "2.21.0"
+gem "will_paginate",            "3.3.1"
+gem "bootstrap-will_paginate",  "1.0.0"

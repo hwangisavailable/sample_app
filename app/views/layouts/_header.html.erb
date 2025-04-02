@@ -16,7 +16,9 @@
 
                 <% if logged_in? %>
 
-                <li><%= link_to "Users", '#' %></li>
+                <li>
+                    <%= link_to t('users.index.title'), users_path %>
+                </li>
                 <li class="dropdown">
                     <a href="#" id="account" class="dropdown-toggle">
                         Account <b class="caret"></b>
