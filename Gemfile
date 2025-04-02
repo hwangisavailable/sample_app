@@ -42,3 +42,4 @@ gem "bootstrap-sass", "3.4.1"
 gem "i18n", "~> 1.14"
 
 gem "bcrypt", "~> 3.1"
+gem "config", "~> 5.5"

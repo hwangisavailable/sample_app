@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+
+    # Redirect to root path if user is not found
+    if @user.nil?
+      flash[:danger] = t('.flash.error')
+      redirect_to root_url, status: :see_other
+    end
   end
   def new
     @user = User.new
@@ -13,8 +19,30 @@ class UsersController < ApplicationController
       flash[:success] = t('.flash.success')
       redirect_to @user
     else
-      render 'new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = t('.flash.success')
+      redirect_to @user
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    flash[:success] = t('.flash.success', name: @user.name)
+    @user.destroy
+
+    redirect_to users_url, status: :see_other
   end
 
   private 

@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-# Common dictionaries
+  # Common dictionaries
   hello: "Hello world"
   appname: "Ruby on Rails Tutorial Sample App"
 
@@ -43,7 +43,7 @@ en:
       kitten: "Kitten image"
       rails_logo: "Rails logo"
 
-# Model form labels
+  # Model form labels
   helpers:
     submit:
       user:
@@ -51,12 +51,12 @@ en:
         update: "Update my account"
     label:
       user:
-        name: 'Your name?'
-        email: 'Email?'
-        password: 'Password?'
-        password_confirmation: 'Password confirmation'
+        name: "Your name?"
+        email: "Email?"
+        password: "Password?"
+        password_confirmation: "Password confirmation"
 
-# Views only
+  # Views only
   layouts:
     footer:
       news: "News"
@@ -64,6 +64,20 @@ en:
   users:
     new:
       title: "Sign up"
+    index:
+      title: "All users"
+    show:
+      title: "Profile"
+      flash:
+        error: "User not found"
+    edit:
+      title: "Settings"
+      title_on_page: "Edit user"
+      header: "Update your profile"
+    delete:
+      title: "delete"
+      confirmation: "You sure?"
+
     create:
       flash:
         success: "User created!"
@@ -71,7 +85,7 @@ en:
 
   shared:
     error_messages:
-      message: 
+      message:
         one: "The form contains 1 error"
         other: "The form contains %{count} errors"
 
@@ -112,5 +126,3 @@ en:
         - "Ruby on Rails Tutorial"
         - "sample application"
       cto: "Sign up now!"
-
-  
