@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  
   def show
-    @user = User.find_by(id: params[:id])
-
     # Redirect to root path if user is not found
     if @user.nil?
       flash[:danger] = t('.flash.error')
@@ -16,6 +16,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       # Handle a successful save.
+      reset_session
+      log_in @user
+
       flash[:success] = t('.flash.success')
       redirect_to @user
     else
@@ -24,11 +27,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = t('.flash.success')
       redirect_to @user
@@ -38,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     flash[:success] = t('.flash.success', name: @user.name)
     @user.destroy
 
@@ -51,5 +51,9 @@ class UsersController < ApplicationController
       params
         .require(:user)
         .permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def set_user
+      @user = User.find_by(id: params[:id]) 
     end
 end

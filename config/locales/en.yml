@@ -89,6 +89,21 @@ en:
         one: "The form contains 1 error"
         other: "The form contains %{count} errors"
 
+  login:
+    title: "Log in"
+    not_registered: "Sign up now!"
+    log_out: "Log out"
+    flash:
+      success: "Logged in successfully"
+      error: "Invalid email/password combination"
+
+  pages:
+    settings:
+      title: "Settings"
+
+    profile:
+      title: "Profile"
+
   static_pages:
     about:
       title: "About"
