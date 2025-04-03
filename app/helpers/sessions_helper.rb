@@ -6,12 +6,6 @@ module SessionsHelper
     session[:session_token] = user.session_token
   end
 
-  def remember(user)
-    user.remember
-    cookies.permanent.encrypted[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
-  end
-
   def current_user
     if (user_id = session[:user_id])
       user = User.find_by(id: user_id)
@@ -27,14 +21,14 @@ module SessionsHelper
     end
   end
 
+  def current_user?(user)
+    user && user == current_user
+  end
+
   def remember(user)
     user.remember
     cookies.permanent.encrypted[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
-  end
-
-  def logged_in?
-    !current_user.nil?
   end
 
   def forget(user)
@@ -49,4 +43,11 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def logged_in?
+    !current_user.nil?
+  end
+  # For friendly forwarding to other ppl profile when current user is not authorized to edit/delete
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
 end

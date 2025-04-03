@@ -17,6 +17,7 @@ gem "concurrent-ruby", "1.3.4"
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
+  gem "faker",  "2.21.0"
 end
 
 group :development do
@@ -43,3 +44,5 @@ gem "i18n", "~> 1.14"
 
 gem "bcrypt", "~> 3.1"
 gem "config", "~> 5.5"
+gem "will_paginate",            "3.3.1"
+gem "bootstrap-will_paginate",  "1.0.0"
