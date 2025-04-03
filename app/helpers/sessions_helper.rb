@@ -6,12 +6,6 @@ module SessionsHelper
     session[:session_token] = user.session_token
   end
 
-  def remember(user)
-    user.remember
-    cookies.permanent.encrypted[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
-  end
-
   def current_user
     if (user_id = session[:user_id])
       user = User.find_by(id: user_id)
@@ -35,10 +29,6 @@ module SessionsHelper
     user.remember
     cookies.permanent.encrypted[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
-  end
-
-  def logged_in?
-    !current_user.nil?
   end
 
   def forget(user)
