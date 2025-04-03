@@ -7,7 +7,10 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User
+      .where(activated: true)
+      .select(:id, :name, :email)
+      .paginate(page: params[:page])
   end
   def show
     # Redirect to root path if user is not found
