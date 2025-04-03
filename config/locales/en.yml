@@ -80,6 +80,7 @@ en:
 
     create:
       flash:
+        mail: "Please check your email to activate your account."
         success: "User created!"
         error: "User not created!!!"
     update:
