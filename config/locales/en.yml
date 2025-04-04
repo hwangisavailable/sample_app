@@ -108,6 +108,9 @@ en:
     micropost_form:
       compose_new: "Compose new micropost..."
       submit: "Post"
+    stats:
+      followings: "followings"
+      followers: "followers"
 
   login:
     title: "Log in"

@@ -58,3 +58,34 @@ User.find_each do |user|
     user.microposts.create!(content: content)
   end
 end
+
+users = User.all
+
+# Users 0 to 9 (ID 1 to 10) will follow between 0 to 10 users randomly
+(0..9).each do |user_id|
+  user = users[user_id]
+
+  following_count = rand(0..10)
+  # Now, sample from ALL users, excluding the current user
+  following = users.reject { |u| u == user }.sample(following_count)
+
+  following.each do |followed_user|
+    user.follow(followed_user) unless user.following.include?(followed_user)
+  end
+end
+
+# Users greater than 9 (user IDs 10 and beyond) should follow users 0 to 9
+users[10..].each do |user|
+  following_count = if rand < 0.5
+                      rand(8..10)  # 50% chance to follow between 8 and 10 users
+                    else
+                      rand(0..7)  # Otherwise follow between 0 and 7 users
+                    end
+
+  # Randomly select users from the list of users 0 to 9
+  following = users[0..9].sample(following_count)
+
+  following.each do |followed_user|
+    user.follow(followed_user) unless user.following.include?(followed_user)
+  end
+end
