@@ -1,3 +1,5 @@
 user_name_length_max: 50
 user_email_length_max: 255
 user_password_length_min: 8
+micropost_content_length_max: 140
+microposts_per_page: 10

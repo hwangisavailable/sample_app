@@ -11,14 +11,18 @@ User.create!(
   name:  "Mr. Author",
   email: "example@railstutorial.org",
   password:              "foobarfoobar",
-  password_confirmation: "foobarfoobar"
+  password_confirmation: "foobarfoobar",
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 User.create!(
   name:  "Banana Cat (happy)",
   email: "happihappi@happi.com",
   password:              "happihappi",
-  password_confirmation: "happihappi"
+  password_confirmation: "happihappi",
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 User.create!(
@@ -26,6 +30,8 @@ User.create!(
   email: "banana@cry4.com",
   password:              "banana@cry4.com",
   password_confirmation: "banana@cry4.com",
+  activated: true,
+  activated_at: Time.zone.now,
   admin: true,
 )
 
@@ -34,8 +40,21 @@ User.create!(
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
+  User.create!(
+    name:  name,
+    email: email,
+    password:              password,
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now
+  )
+end
+
+# Create microposts for each user
+User.find_each do |user|
+  # Create a number of posts for each user
+  rand(1..3).times do
+    content = Faker::Lorem.sentence(word_count: rand(5..15))  # Random content for the post
+    user.microposts.create!(content: content)
+  end
 end
