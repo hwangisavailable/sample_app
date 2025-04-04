@@ -18,6 +18,10 @@ class UsersController < ApplicationController
       flash[:danger] = t('.flash.error')
       redirect_to root_url, status: :see_other
     end
+
+    @microposts = @user.microposts
+      .select(:id, :user_id, :content, :created_at)
+      .paginate(page: params[:page], per_page: Settings.microposts_per_page)
   end
   def new
     @user = User.new
@@ -63,14 +67,6 @@ class UsersController < ApplicationController
     end
 
     # Before filters
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = t('login.not_authenticated')
-        redirect_to login_url, status: :see_other
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

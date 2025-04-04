@@ -49,3 +49,12 @@ User.create!(
     activated_at: Time.zone.now
   )
 end
+
+# Create microposts for each user
+User.find_each do |user|
+  # Create a number of posts for each user
+  rand(1..3).times do
+    content = Faker::Lorem.sentence(word_count: rand(5..15))  # Random content for the post
+    user.microposts.create!(content: content)
+  end
+end
