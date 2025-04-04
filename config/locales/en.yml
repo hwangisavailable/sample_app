@@ -49,12 +49,16 @@ en:
       user:
         create: "Create my account"
         edit: "Save changes"
+      password_reset: "Submit"
+
     label:
       user:
         name: "Your name?"
         email: "Email?"
         password: "Password?"
         password_confirmation: "Password confirmation"
+      password_reset:
+        email: "Email registered:"
 
   # Views only
   layouts:
@@ -80,6 +84,7 @@ en:
 
     create:
       flash:
+        mail: "Please check your email to activate your account."
         success: "User created!"
         error: "User not created!!!"
     update:
@@ -102,11 +107,19 @@ en:
     not_authenticated: "Please log in"
     not_authorized: "You don't have permission to do so"
 
+    forgot_password: "(forgot password)"
     remember_me: "Remember me on this computer"
     log_out: "Log out"
     flash:
       success: "Logged in successfully"
       error: "Invalid email/password combination"
+
+  password_resets:
+    new:
+      title: "Forgot password"
+    flash:
+      success: "Email sent with password reset instructions"
+      error: "Email address not found"
 
   static_pages:
     about:
