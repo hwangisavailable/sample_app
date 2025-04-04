@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -7,14 +7,21 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User
+      .where(activated: true)
+      .select(:id, :name, :email)
+      .paginate(page: params[:page])
   end
   def show
     # Redirect to root path if user is not found
-    if @user.nil?
+    if @user.nil? || !@user.activated
       flash[:danger] = t('.flash.error')
       redirect_to root_url, status: :see_other
     end
+
+    @microposts = @user.microposts
+      .select(:id, :user_id, :content, :created_at)
+      .paginate(page: params[:page], per_page: Settings.microposts_per_page)
   end
   def new
     @user = User.new
@@ -24,11 +31,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       # Handle a successful save.
-      reset_session
-      log_in @user
-
-      flash[:success] = t('.flash.success')
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = t('.flash.mail')
+      redirect_to root_url
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,6 +58,20 @@ class UsersController < ApplicationController
     redirect_to users_url, status: :see_other
   end
 
+  def following
+    @title = t('.title')
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render :show_follow, status: :unprocessable_entity
+  end
+
+  def followers
+    @title = t('.title')
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render :show_follow, status: :unprocessable_entity
+  end
+
   private 
   
     def user_params
@@ -62,14 +81,6 @@ class UsersController < ApplicationController
     end
 
     # Before filters
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = t('login.not_authenticated')
-        redirect_to login_url, status: :see_other
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])
