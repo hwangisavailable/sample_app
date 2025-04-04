@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-
-  before_action :logged_in_user, only: [:create, :destroy]
-
+  
   private
     # Confirms a logged-in user.
     def logged_in_user
