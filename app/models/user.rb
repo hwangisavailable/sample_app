@@ -84,10 +84,12 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-  # Defines a proto-feed.
-  # See "Following users" for the full implementation.
+  # Returns a user's status feed.
   def feed
-    Micropost.where("user_id = ?", id).select(:id, :user_id, :content, :created_at)
+    part_of_feed = "relationships.follower_id = :id or microposts.user_id = :id"
+    Micropost.left_outer_joins(user: :followers)
+             .where(part_of_feed, { id: id }).distinct
+             .includes(:user, image_attachment: :blob)
   end
 
    # Follows a user.

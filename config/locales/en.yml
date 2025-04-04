@@ -81,6 +81,10 @@ en:
     delete:
       title: "delete"
       confirmation: "You sure?"
+    following:
+      title: "Following"
+    followers:
+      title: "Followers"
 
     create:
       flash:
